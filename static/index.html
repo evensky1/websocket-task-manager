@@ -79,7 +79,7 @@
         .find((row) => row.startsWith('jwt='))
         ?.split('=')[1]
 
-    const socket = io('ws://localhost:3000', {query: {token}})
+    const socket = io('ws://localhost:8085', {query: {token}})
         .on('data', tasks => {
             currentData = tasks
             updateView(currentData);
