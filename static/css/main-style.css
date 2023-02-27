@@ -1,0 +1,43 @@
+.wip {
+    background-color: #d9a762;
+}
+
+body {
+    display: flex;
+}
+
+.my-pos {
+    margin: 40px auto 0 auto;
+    width: 50%;
+    border-style: solid;
+}
+
+.task {
+    margin: 2px;
+    border-style: groove;
+}
+
+.task-container {
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+.task-push-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-style: solid;
+    padding: 10px;
+    height: max-content;
+    margin: 100px 0 0 100px;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.auth-form {
+    margin: 30vh auto auto;
+}

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main-style.css">
+    <title>Registration</title>
+</head>
+<body>
+<div class="auth-form">
+    <h1>Registration</h1>
+    <div class="form-group">
+        <label>Username</label>
+        <input class="form-control" id="username" name="username" placeholder="Username">
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+    </div>
+    <button type="submit" id="register-btn" class="btn btn-primary">Register</button>
+    <a href="/login">Login</a>
+</div>
+</body>
+<script>
+    function register() {
+        const data = {
+            username: document.querySelector('#username').value,
+            password: document.querySelector('#password').value
+        }
+        fetch('/auth/registration', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        }).then(res => {
+            if (res.status === 201) {
+                alert('You were successfully registered')
+                window.location.replace(window.location.origin + '/login');
+            } else if (res.status === 400) {
+                return res.json()
+            }
+        }).then(json => alert('400: ' + json.message))
+    }
+
+    document.querySelector('#register-btn').addEventListener('click', register)
+</script>
+</html>
